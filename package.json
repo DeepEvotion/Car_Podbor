@@ -1,0 +1,10 @@
+{
+  "name": "carmatch-mvp",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "start": "python -m backend.app.main",
+    "test": "python -m pytest -q",
+    "check": "python -m py_compile backend/app/main.py backend/app/recommender.py"
+  }
+}

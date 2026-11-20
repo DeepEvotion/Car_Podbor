@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: carmatch-postgres
+    environment:
+      POSTGRES_DB: carmatch
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - carmatch-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  carmatch-postgres-data:
