@@ -1,0 +1,25 @@
+services:
+  carmatch:
+    image: ${APP_IMAGE}
+    container_name: carmatch
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-80}:8000"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8000
+      SQLITE_PATH: /app/data/carmatch.sqlite3
+      AI_PROVIDER: ${AI_PROVIDER:-local}
+      AI_CHAT_URL: ${AI_CHAT_URL:-}
+      AI_MODEL: ${AI_MODEL:-}
+      AI_API_KEY: ${AI_API_KEY:-}
+    volumes:
+      - carmatch-data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  carmatch-data:

@@ -1,0 +1,12 @@
+.git
+.gitignore
+.env
+data/*.sqlite3
+runtime.log
+runtime.err
+__pycache__
+.pytest_cache
+.hypothesis
+.venv
+node_modules
+ТЗ_*.md

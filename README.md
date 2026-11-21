@@ -4,6 +4,15 @@
 
 ## Запуск
 
+### GitLab CI/CD и Docker-деплой
+
+Проект содержит `Dockerfile`, `deploy/docker-compose.yml` и `.gitlab-ci.yml`.
+Pipeline собирает образ через Kaniko, публикует его в Spirit Registry и на push
+в `master` обновляет приложение на ВМ. Для pipeline нужны защищённые файловые
+переменные `SPIRIT_DOCKER_SA_KEY` и `DEPLOY_KEY`, а также `DEPLOY_HOST`.
+На ВМ заранее должны быть Docker, `docker compose`, `sudo` без пароля и Spirit CLI
+`dp`. Порт задаётся через `APP_PORT` и по умолчанию равен 80.
+
 Сервер работает на Flask, данные хранятся в PostgreSQL. Для локального запуска нужен Python 3.12 или новее и PostgreSQL 14+.
 
 Установите зависимости:
